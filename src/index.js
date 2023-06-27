@@ -4,71 +4,90 @@ import "./index.css";
 
 const skills = [
   {
-    skill: "HTML",
-    level: "Intermediate",
-    color: "red",
+    skill: "HTML+CSS",
+    level: "advanced",
+    color: "#2662EA",
   },
   {
-    skill: "CSS",
-    level: "Intermediate",
-    color: "gree",
+    skill: "JavaScript",
+    level: "advanced",
+    color: "#EFD81D",
   },
   {
-    skill: "JAVASCRIPT",
-    level: "Intermediate",
-    color: "yellow",
+    skill: "Web Design",
+    level: "advanced",
+    color: "#C3DCAF",
   },
   {
-    skill: "REACT",
-    level: "Intermediate",
-    color: "blue",
+    skill: "Git and GitHub",
+    level: "intermediate",
+    color: "#E84F33",
+  },
+  {
+    skill: "React",
+    level: "advanced",
+    color: "#60DAFB",
+  },
+  {
+    skill: "Svelte",
+    level: "beginner",
+    color: "#FF3B00",
   },
 ];
 
 function App() {
   return (
-    <React.Fragment>
-      <div className="card">
-        <Avatar />
-
+    <div className="card">
+      <Avatar />
+      <div className="data">
         <Intro />
-        {/* <SkillList /> */}
+        <SkillList />
       </div>
-    </React.Fragment>
+    </div>
   );
 }
 
 function Avatar() {
-  return <img src="/pic.jpg" className="avatar" alt="" />;
+  return <img className="avatar" src="/pic.jpg" alt="Renz" />;
 }
 
 function Intro() {
   return (
-    <div className="data">
+    <div>
       <h1>Renz King Gayacao</h1>
       <p>
         Lorem Ipsum is simply dummy text of the printing and typesetting
         industry. Lorem Ipsum has been the industry's standard dummy text ever
         since the 1500s, when an unknown printer took a galley of type and
-        scrambled it to make a type specimen book.
+        scrambled it to make a type specimen book. It has survived not only five
+        centuries
       </p>
     </div>
   );
 }
 
-// function SkillList (){
-//     return (
+function SkillList() {
+  return (
+    <div className="skill-list">
+      {skills.map((skill) => (
+        <Skill skill={skill.skill} level={skill.level} color={skill.color} />
+      ))}
+    </div>
+  );
+}
+function Skill({ skill, color, level }) {
+  return (
+    <div className="skill" style={{ backgroundColor: color }}>
+      <span>{skill}</span>
 
-//     )
-// }
-
-// function Skill(){
-//     return (
-
-//     )
-// }
-
-//RENDER ROOT//
+      <span>
+        {level === "Beginer" && "😵‍💫"}
+        {level === "Intermediate" && "👌"}
+        {level === "Advance" && "💪"}
+      </span>
+    </div>
+  );
+}
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
